@@ -1,0 +1,45 @@
+<body>
+    <div id="nav"></div>
+    
+    <div class="confirm-container">
+        <h2>Confirm Order</h2>
+        <div id="orderSummary"></div>
+        <button onclick="saveOrder()">Confirm Order</button>
+        <button onclick="location.href='cart.html'">Edit Cart</button>
+    </div>
+
+    <div id="footer"></div>
+    
+    <script src="app.js"></script>
+    <script>
+        // 登录验证
+        if (!sessionStorage.currentUser) window.location.href = 'index.html';
+
+        // 加载购物车数据
+        const cart = JSON.parse(localStorage.getItem('cart')) || [];
+        
+        // 显示订单摘要
+        document.getElementById('orderSummary').innerHTML = `
+            <h3>Order Items (${cart.length})</h3>
+            ${cart.map(item => `
+                <div class="order-item">
+                    <p>${item.name} x${item.quantity} - $${(item.price * item.quantity).toFixed(2)}</p>
+                </div>
+            `).join('')}
+            <h4>Total: $${cart.reduce((sum, item) => sum + item.price * item.quantity, 0).toFixed(2)}</h4>
+        `;
+
+        // 保存订单
+        function saveOrder() {
+            const orders = JSON.parse(localStorage.getItem('orders')) || [];
+            orders.push({
+                user: sessionStorage.currentUser,
+                items: cart,
+                timestamp: new Date().toISOString()
+            });
+            localStorage.orders = JSON.stringify(orders);
+            alert('Order saved successfully!');
+            window.location.href = 'logout.html';
+        }
+    </script>
+</body>

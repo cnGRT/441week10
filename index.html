@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>E-Commerce App - grant</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- 动态导航栏（由app.js加载） -->
+    <div id="nav"></div>
+
+    <!-- 首页内容 -->
+    <div class="banner">
+        <h1>Welcome to Grant Store</h1>
+    </div>
+
+    <div class="auth-forms">
+        <div class="register">
+            <h2>Register</h2>
+            <input type="text" id="regUsername" placeholder="Username">
+            <input type="password" id="regPassword" placeholder="Password">
+            <button onclick="register()">Register</button>
+        </div>
+
+        <div class="login">
+            <h2>Login</h2>
+            <input type="text" id="loginUsername" placeholder="Username">
+            <input type="password" id="loginPassword" placeholder="Password">
+            <button onclick="login()">Login</button>
+        </div>
+    </div>
+
+    <!-- 动态页脚（由app.js加载） -->
+    <div id="footer"></div>
+
+    <script src="app.js"></script>
+</body>
+</html>

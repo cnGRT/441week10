@@ -1,0 +1,52 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+#nav {
+    background: #333;
+    padding: 1rem;
+    color: white;
+}
+
+#nav a {
+    color: white;
+    margin: 0 1rem;
+    text-decoration: none;
+}
+
+.banner {
+    background: #f0f0f0;
+    text-align: center;
+    padding: 2rem;
+}
+
+.auth-forms {
+    display: flex;
+    justify-content: space-around;
+    padding: 2rem;
+}
+
+.product-item {
+    border: 1px solid #ddd;
+    padding: 1rem;
+    margin: 1rem;
+}
+/* 优化图片显示 */
+.product-item img {
+    width: 200px;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 8px;
+    margin-bottom: 1rem;
+}
+#footer {
+    background: #333;
+    color: white;
+    text-align: center;
+    padding: 1rem;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}

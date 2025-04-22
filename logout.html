@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Logout - Your Name</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div id="nav"></div>
+    
+    <div class="logout-container">
+        <h2>Logout Page</h2>
+        <button onclick="handleLogout()">Confirm Logout</button>
+    </div>
+
+    <div id="footer"></div>
+    
+    <script src="app.js"></script>
+    <script>
+        // 注销逻辑
+        function handleLogout() {
+            // 1. 清空购物车
+            localStorage.removeItem('cart');
+            
+            // 2. 下载订单文件
+            const orders = JSON.parse(localStorage.orders || '[]');
+            if (orders.length > 0) {
+                const blob = new Blob([JSON.stringify(orders)], { type: 'text/plain' });
+                const url = URL.createObjectURL(blob);
+                const a = document.createElement('a');
+                a.href = url;
+                a.download = `orders_${Date.now()}.txt`;
+                a.click();
+            }
+            
+            // 3. 清除会话并跳转首页
+            sessionStorage.removeItem('currentUser');
+            window.location.href = 'index.html';
+        }
+    </script>
+</body>
+</html>
