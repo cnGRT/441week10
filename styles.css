@@ -1,5 +1,8 @@
 body {
     font-family: Arial, sans-serif;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh; /* 确保页面至少占满整个视口高度 */
     margin: 0;
     padding: 0;
 }
@@ -41,12 +44,44 @@ body {
     border-radius: 8px;
     margin-bottom: 1rem;
 }
-#footer {
-    background: #333;
+.cart-container {
+    flex: 1; /* 占据剩余空间 */
+    padding: 20px;
+    padding-bottom: 60px; /* 为页脚预留空间 */
+}
+/* 导航栏样式 */
+.navbar {
+    background: #2c3e50;
+    padding: 1rem;
+    display: flex;
+    gap: 2rem;
+    align-items: center;
+}
+
+.navbar a {
+    color: white;
+    text-decoration: none;
+    font-weight: 500;
+    transition: opacity 0.3s;
+}
+
+.navbar a:hover {
+    opacity: 0.8;
+}
+
+.user-status {
+    color: #ecf0f1;
+    margin-left: auto;
+    margin-right: 2rem;
+}
+
+/* 页脚样式 */
+.footer {
+    background: #2c3e50;
     color: white;
     text-align: center;
     padding: 1rem;
-    position: fixed;
-    bottom: 0;
-    width: 100%;
+    /* 移除 fixed 定位 */
+    position: static; 
+    margin-top: auto; /* 关键：将页脚推到底部 */
 }
