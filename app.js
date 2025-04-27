@@ -34,7 +34,40 @@ function loadCommon() {
     `;
     document.getElementById('footer').innerHTML = "© 2023 Your Name";
 }
+// 动态加载公共组件
+function loadCommon() {
+    const user = sessionStorage.currentUser;
+    
+    // 导航栏模板
+    const navHTML = `
+        <div class="navbar">
+            <a href="index.html">Home</a>
+            <a href="cart.html">Cart</a>
+            ${user ? `
+                <span class="user-status">Welcome, ${user}</span>
+                <a href="logout.html">Logout</a>
+            ` : ''}
+        </div>
+    `;
+    
+    // 页脚模板
+    const footerHTML = `
+        <div class="footer">
+            <p>© 2024 Grant | E-Commerce Project</p>
+        </div>
+    `;
 
+    // 注入到所有页面
+    if (document.getElementById('nav')) {
+        document.getElementById('nav').innerHTML = navHTML;
+    }
+    if (document.getElementById('footer')) {
+        document.getElementById('footer').innerHTML = footerHTML;
+    }
+}
+
+// 页面加载时自动执行
+document.addEventListener('DOMContentLoaded', loadCommon);
 // 注册功能
 function register() {
     const users = JSON.parse(localStorage.users);
