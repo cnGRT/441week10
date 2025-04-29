@@ -9,14 +9,14 @@ if (!localStorage.products) {
             name: "Laptop", 
             price: 799, 
             description: "High-performance laptop",
-            image: "https://cdn.britannica.com/s:700x500/77/170477-050-1C747EE3/Laptop-computer.jpg" 
+            image: "Laptop-computer.jpg" 
         },
         { 
             id: 2, 
             name: "Laptop", 
             price: 1099, 
             description: "Laptop",
-            image: "https://i5.walmartimages.com/asr/299c9aef-fd6d-426d-bcbc-f1945574730a.7933d342c6d74b4bb3f11a6cf10c4115.jpeg" 
+            image: "laptop.jpg" 
         }
     ]);
 }
