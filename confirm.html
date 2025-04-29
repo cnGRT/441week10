@@ -6,10 +6,10 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <!-- 导航栏容器 -->
+    <!-- Navigation bar container -->
     <div id="nav"></div>
 
-    <!-- 确认订单内容 -->
+    <!-- Confirm the details of your order -->
     <div class="confirm-container">
         <h2>Confirm Order</h2>
         <div id="orderSummary"></div>
@@ -17,19 +17,19 @@
         <button onclick="location.href='cart.html'">Edit Cart</button>
     </div>
 
-    <!-- 页脚容器 -->
+    <!-- Footer container -->
     <div id="footer"></div>
 
-    <!-- JavaScript 必须放在 body 末尾 -->
+    <!-- JavaScript must be placed at the end of the body -->
     <script src="app.js"></script>
     <script>
-        // 登录验证
+        // Login verification
         if (!sessionStorage.currentUser) window.location.href = 'index.html';
 
-        // 加载购物车数据
+        // Load the cart data
         const cart = JSON.parse(localStorage.getItem('cart')) || [];
         
-        // 显示订单摘要
+        // Displays a summary of the order
         document.getElementById('orderSummary').innerHTML = `
             <h3>Order Items (${cart.length})</h3>
             ${cart.map(item => `
@@ -40,7 +40,7 @@
             <h4>Total: $${cart.reduce((sum, item) => sum + item.price * item.quantity, 0).toFixed(2)}</h4>
         `;
 
-        // 保存订单
+        // Save the order
         function saveOrder() {
             const orders = JSON.parse(localStorage.getItem('orders')) || [];
             orders.push({
