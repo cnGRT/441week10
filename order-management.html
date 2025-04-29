@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Order Management - Grant</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div id="nav"></div>
+
+    <div class="order-management">
+        <h2>Order Management</h2>
+        <button id="download-orders">Download Orders</button>
+        <!-- 新增 Clear Storage 按钮 -->
+        <button id="clear-storage">Clear Storage</button>
+        <div id="orders-list"></div>
+    </div>
+
+    <div id="footer"></div>
+
+    <script src="app.js"></script>
+    <script>
+        // 加载订单历史
+        const orders = JSON.parse(localStorage.getItem('orders') || '[]');
+        document.getElementById('orders-list').innerHTML = orders.map(order => `
+            <div class="order">
+                <p>Order by: ${order.user}</p>
+                <p>Date: ${new Date(order.timestamp).toLocaleString()}</p>
+            </div>
+        `).join('');
+
+        // 下载订单功能
+        document.getElementById('download-orders').addEventListener('click', () => {
+            const blob = new Blob([JSON.stringify(orders)], { type: 'text/plain' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = `orders_${Date.now()}.txt`;
+            a.click();
+        });
+
+        // 新增：清除浏览器存储
+        document.getElementById('clear-storage').addEventListener('click', () => {
+            if (confirm('Are you sure you want to clear ALL data? This cannot be undone!')) {
+                localStorage.clear();
+                sessionStorage.clear();
+                alert('All data has been cleared. Redirecting to homepage...');
+                window.location.href = 'index.html';
+            }
+        });
+    </script>
+</body>
+</html>
