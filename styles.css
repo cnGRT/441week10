@@ -11,12 +11,16 @@ body {
     background: #333;
     padding: 1rem;
     color: white;
+    gap: 1rem; /* Reduce gap for more links */
+    flex-wrap: wrap; /* Allow wrapping on small screens */
 }
 
 #nav a {
     color: white;
     margin: 0 1rem;
     text-decoration: none;
+    padding: 0.5rem;
+    white-space: nowrap; /* Prevent text wrapping */
 }
 
 .banner {
