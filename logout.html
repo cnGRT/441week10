@@ -6,27 +6,26 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <!-- 导航栏容器 -->
+    <!-- Navigation bar container -->
     <div id="nav"></div>
 
-    <!-- 注销页面内容 -->
+    <!-- Log out of the page contents -->
     <div class="logout-container">
         <h2>Logout Page</h2>
         <button onclick="handleLogout()">Confirm Logout</button>
     </div>
 
-    <!-- 页脚容器 -->
+    <!-- Footer container -->
     <div id="footer"></div>
 
-    <!-- JavaScript 必须放在 body 末尾 -->
     <script src="app.js"></script>
     <script>
-        // 注销逻辑
+        // Logout logic
         function handleLogout() {
-            // 1. 清空购物车
+            // 1. Empty your shopping cart
             localStorage.removeItem('cart');
             
-            // 2. 下载订单文件
+            // 2.Download the order file
             const orders = JSON.parse(localStorage.orders || '[]');
             if (orders.length > 0) {
                 const blob = new Blob([JSON.stringify(orders)], { type: 'text/plain' });
@@ -37,7 +36,7 @@
                 a.click();
             }
             
-            // 3. 清除会话并跳转首页
+            // 3. Clear the session and jump to the home page
             sessionStorage.removeItem('currentUser');
             window.location.href = 'index.html';
         }
