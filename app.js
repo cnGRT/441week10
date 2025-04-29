@@ -43,13 +43,17 @@ function loadCommon() {
         <div class="navbar">
             <a href="index.html">Home</a>
             <a href="cart.html">Cart</a>
+            <a href="confirm.html">confirm</a>
+            <a href="order-management.html">order-management</a>
+            <a href="logout.html">logout</a>
             ${user ? `
+                <a href="order-management.html">Order Management</a>
                 <span class="user-status">Welcome, ${user}</span>
                 <a href="logout.html">Logout</a>
             ` : ''}
         </div>
     `;
-    
+    document.getElementById('footer').innerHTML = "© 2024 grant";
     // Footer template
     const footerHTML = `
         <div class="footer">
