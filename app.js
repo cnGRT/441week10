@@ -1,6 +1,6 @@
 // Created by Grant
 
-// 初始化本地数据库
+// Initialize local database
 if (!localStorage.users) localStorage.users = JSON.stringify([]);
 if (!localStorage.products) {
     localStorage.products = JSON.stringify([
@@ -21,11 +21,11 @@ if (!localStorage.products) {
     ]);
 }
 
-// 动态加载导航栏和用户状态
+// Dynamically load the navigation bar and user status
 function loadCommon() {
     const user = sessionStorage.currentUser;
     
-    // 导航栏模板
+    // Navigation Bar Template
     const navHTML = `
         <div class="navbar">
             <a href="index.html">Home</a>
@@ -43,14 +43,14 @@ function loadCommon() {
     document.getElementById('footer').innerHTML = "© 2024 grant";
 
     
-    // 页脚模板
+    // Footer template
     const footerHTML = `
         <div class="footer">
             <p>© 2024 Grant | E-Commerce Project</p>
         </div>
     `;
 
-    // 注入到所有页面
+    // Inject into all pages
     if (document.getElementById('nav')) {
         document.getElementById('nav').innerHTML = navHTML;
     }
@@ -59,9 +59,9 @@ function loadCommon() {
     }
 }
 
-// 页面加载时自动执行
+// Automatically execute when the page loads
 document.addEventListener('DOMContentLoaded', loadCommon);
-// 注册功能
+// Registration function
 function register() {
     const users = JSON.parse(localStorage.users);
     const username = document.getElementById('regUsername').value;
@@ -71,7 +71,7 @@ function register() {
     alert('Registration successful!');
 }
 
-// 登录功能
+// Login function
 function login() {
     const users = JSON.parse(localStorage.users);
     const username = document.getElementById('loginUsername').value;
@@ -85,5 +85,5 @@ function login() {
     }
 }
 
-// 初始化页面
+// Initialize page
 loadCommon();
