@@ -1,6 +1,6 @@
 // Created by Grant
 
-// Initialize the local database
+// 初始化本地数据库
 if (!localStorage.users) localStorage.users = JSON.stringify([]);
 if (!localStorage.products) {
     localStorage.products = JSON.stringify([
@@ -21,24 +21,11 @@ if (!localStorage.products) {
     ]);
 }
 
-// Dynamically load navigation bars and user states
-function loadCommon() {
-    const user = sessionStorage.currentUser;
-    document.getElementById('nav').innerHTML = `
-        <a href="index.html">Home</a>
-        <a href="cart.html">Cart</a>
-        ${user ? `
-            <span>Welcome, ${user}</span>
-            <a href="logout.html">Logout</a>
-        ` : ''}
-    `;
-    document.getElementById('footer').innerHTML = "© 2023 Your Name";
-}
-// Dynamically load public components
+// 动态加载导航栏和用户状态
 function loadCommon() {
     const user = sessionStorage.currentUser;
     
-    // Navigation bar template
+    // 导航栏模板
     const navHTML = `
         <div class="navbar">
             <a href="index.html">Home</a>
@@ -54,14 +41,16 @@ function loadCommon() {
         </div>
     `;
     document.getElementById('footer').innerHTML = "© 2024 grant";
-    // Footer template
+
+    
+    // 页脚模板
     const footerHTML = `
         <div class="footer">
             <p>© 2024 Grant | E-Commerce Project</p>
         </div>
     `;
 
-    // Inject to all pages
+    // 注入到所有页面
     if (document.getElementById('nav')) {
         document.getElementById('nav').innerHTML = navHTML;
     }
@@ -70,9 +59,9 @@ function loadCommon() {
     }
 }
 
-// Automatically on page load
+// 页面加载时自动执行
 document.addEventListener('DOMContentLoaded', loadCommon);
-// Sign-up features
+// 注册功能
 function register() {
     const users = JSON.parse(localStorage.users);
     const username = document.getElementById('regUsername').value;
@@ -82,7 +71,7 @@ function register() {
     alert('Registration successful!');
 }
 
-// Sign-in function
+// 登录功能
 function login() {
     const users = JSON.parse(localStorage.users);
     const username = document.getElementById('loginUsername').value;
@@ -96,5 +85,5 @@ function login() {
     }
 }
 
-// Initialize the page
+// 初始化页面
 loadCommon();
